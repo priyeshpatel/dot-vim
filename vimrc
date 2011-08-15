@@ -105,7 +105,7 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 " Wrap all text
 nnoremap <leader>q gqip
 
-" F2 to toggle NERTTree
+" F2 to toggle NERDTree
 map <F2> :NERDTreeToggle<cr>
 
 " Stop highlighting
