@@ -57,7 +57,9 @@ set mousehide
 set number
 
 " Colorscheme
-colors darkburn
+"colors darkburn
+set background=dark
+colorscheme solarized
 
 " Always show status line
 set laststatus=2
@@ -197,7 +199,7 @@ if has("gui_running")
     " Font
     set guifont=Consolas:h11
     " Colorscheme
-    colors twilight
+    "colors twilight
     " Remove tab-bar and menu-bar
     set guioptions-=m
     set guioptions-=T
@@ -212,4 +214,6 @@ if !has("gui_running")
     "highlight Normal ctermbg=black ctermfg=white
     " 256 colours in terminal
     set t_Co=256 
+
+    let g:solarized_termcolors=256
 endif
