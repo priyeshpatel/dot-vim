@@ -28,8 +28,8 @@ set termencoding=utf-8
 set laststatus=2
 set ruler
 " set colorcolumn=80
-set showcmd
 set showmode
+set showcmd
 set number
 set title
 
@@ -56,8 +56,9 @@ set expandtab
 set smarttab
 
 " colours
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
+colors darkburn
 
 " mappings
 let mapleader = ","
