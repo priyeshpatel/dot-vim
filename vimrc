@@ -62,10 +62,10 @@ colorscheme solarized
 " mappings
 let mapleader = ","
 nnoremap <leader>q gqip " wrap all text
-nnoremap <F2> :GundoToggle<CR> "Gundo
-nmap <silent> <F3> :noh<cr> " stop highlighting
-nmap <silent> <F4> :set list!<cr> " toggle unprintable characters
-map <F5> :set spell!<cr> " toggle spelling
+nnoremap <F2> :GundoToggle<CR> " Gundo
+nmap <silent> <F3> :noh<CR> " stop highlighting
+nmap <silent> <F4> :set list!<CR> " toggle unprintable characters
+map <F5> :set spell!<CR> " toggle spelling
 nmap <space> :
 imap jj <esc>
 
