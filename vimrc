@@ -44,7 +44,7 @@ set foldenable
 set visualbell
 set splitbelow
 set mouse=a
-set term=xterm-256color
+"set term=xterm-256color
 
 " tabs
 set tabstop=4
