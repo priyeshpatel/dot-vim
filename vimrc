@@ -1,219 +1,103 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
 " Vim Configuration File
 " ~/.vimrc
 "
 " Priyesh Patel
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
 
-" ************************************************************************
-" G E N E R A L
-"
-
-" Set mapleader
-let mapleader = ","
-
-" Forget compatibility with Vi.
+" no compatibility with vi
 set nocompatible
 
-" Auto update $MYVIMRC
-autocmd! bufwritepost .vimrc source $MYVIMRC
-autocmd! bufwritepost vimrc source $MYVIMRC
+" pathogen
+filetype off
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
-" Spelling language
-setlocal spelllang=en_gb
-
-" ************************************************************************
-" S Y N T A X
-"
-
-" Enable filetypes and syntax
+" syntax
 filetype on
 filetype plugin on
 filetype indent on
 syntax on
 
-" Specific file types
-" ActionScript
-au BufEnter,BufNewFile,BufRead *.as setf actionscript
-" Arduino
-autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
-" SCSS
-au BufRead,BufNewFile *.scss set filetype=scss
+" spelling
+setlocal spelllang=en_gb
 
-" ************************************************************************
-" T H E M E ,  L O O K  &  F E E L
-"
-
-" Show line, column and percentage through file
-set ruler
-
-" Show partial commands
-set showcmd
-
-" Hide the mouse
-set mousehide
-
-" Line numbers
-set number
-
-" Colorscheme
-colors darkburn
-"set background=dark
-"colorscheme solarized
-
-" Always show status line
+" appearance
+set encoding=utf-8
+set termencoding=utf-8
 set laststatus=2
+set ruler
+" set colorcolumn=80
+set showcmd
+set showmode
+set number
+set title
 
-" Minimum number of lines to keep above/below cursor if possible
+" behaviour 
+autocmd BufEnter * cd %:p:h " cd to the current file's dir
+set wildmenu
+set backspace=indent,eol,start
+set textwidth=79
+set showbreak=>\ 
 set scrolloff=8
-
-" Enable folds
 set foldenable
-
-" Place split windows below
+set visualbell
 set splitbelow
+set mouse=a
+set term=xterm-256color
 
-" Formatting options
-set formatoptions=qrnc12
-
-" ************************************************************************
-" T A B S  &  S P A C I N G
-"
+" tabs
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set smartindent
 set autoindent
-set linespace=3
 set expandtab
-set softtabstop=4
+set smarttab
 
-" Line wrapping options
-set wrap
-set textwidth=0
-set showbreak=>\ 
+" colours
+set background=dark
+colorscheme solarized
 
-" ************************************************************************
-" M A P P I N G S
-"
-
-" Vim IDE mappings
-set completeopt=longest,menuone
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-" Wrap all text
-nnoremap <leader>q gqip
-
-" F2 to toggle NERDTree
-map <F2> :NERDTreeToggle<cr>
-
-" Stop highlighting
-nmap <silent> <F3> :noh<cr>
-
-" Toggle unprintable characters
-nmap <silent> <F4> :set list!<cr>
-
-" Toggle spelling
-map <F5> :set spell!<cr>
-
-" Use spacebar to enter colon
+" mappings
+let mapleader = ","
+nnoremap <leader>q gqip " wrap all text
+nnoremap <F2> :GundoToggle<CR> "Gundo
+nmap <silent> <F3> :noh<cr> " stop highlighting
+nmap <silent> <F4> :set list!<cr> " toggle unprintable characters
+map <F5> :set spell!<cr> " toggle spelling
 nmap <space> :
-
-" jj in insert mode escapes
 imap jj <esc>
 
-" Edit vimrc
-nmap <leader>ev :e $MYVIMRC<cr>
-
-" List buffers
-nmap <leader>b :ls<cr>
-
-" PHP documenter
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <C-P> :call PhpDocSingle()<CR> 
-vnoremap <C-P> :call PhpDocRange()<CR> 
-
-" ************************************************************************
-" M I S C
-"
-
-" Backups and swap files
-set backupdir=$HOME/.vim/tmp/backup/ " backups
-set directory=$HOME/.vim/tmp/swap/ " swap files
-set backup " enable backup
-
-" Auto change directory
-set autochdir
-cd ~/
-
-" Change CD to that of the file in the buffer
-autocmd BufEnter * cd %:p:h
-
-" Show hidden files in NERDTree
-let NERDTreeShowHidden=1
-
-" More useful command-line completion
-set wildmenu
-
-" Auto-completion menu
-set wildmode=list:longest
-
-" What can I backspace over
-set backspace=indent,eol,start
-
-" Time out length in milliseconds
-set timeoutlen=750
-
-" Allow hiding of modified buffers
-set hidden
-
-" Searching
+" searching
 set hlsearch
 set incsearch
+set showmatch
+set smartcase
+set ignorecase
 
-" ************************************************************************
-" W I N D O W S
-"
+" files
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufNewFile,BufRead *.json set tw=0
 
-if has("win32") || has("win64")
-    " Backups and swap files
-    set backupdir=$HOME/vimfiles/tmp/backup/ " backups
-    set directory=$HOME/vimfiles/tmp/swap/ " swap files
-    set backup " enable backup
+" powerline
+let Powerline_symbols = "unicode"
 
-    " Auto change directory
-    cd D:\
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+highlight Pmenu ctermbg=238 gui=bold
 
-    " Edit vimrc
-    nmap <leader>ev :e $HOME/vimfiles/vimrc<cr>
-endif
+" colorcolumn while <7.3
+match ErrorMsg '\%>80v.\+'
 
-" ************************************************************************
-" G V I M
-"
-
+" gui
 if has("gui_running")
-    " Font
     set guifont=Consolas:h11
-    " Colorscheme
-    colors twilight
-    " Remove tab-bar and menu-bar
     set guioptions-=m
     set guioptions-=T
-endif
-
-" ************************************************************************
-" T E R M I N A L
-"
-
-if !has("gui_running")
-    " Colorscheme
-    "highlight Normal ctermbg=black ctermfg=white
-    " 256 colours in terminal
-    set t_Co=256 
-
-    "let g:solarized_termcolors=256
 endif

@@ -1,5 +1,0 @@
-tmp/swap/*
-tmp/backup/*
-!tmp/swap/.blank
-!tmp/backup/.blank
-.netrwhist
