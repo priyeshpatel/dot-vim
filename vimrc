@@ -27,7 +27,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set laststatus=2
 set ruler
-" set colorcolumn=80
+"set colorcolumn=80
 set showmode
 set showcmd
 set number
@@ -44,7 +44,7 @@ set foldenable
 set visualbell
 set splitbelow
 set mouse=a
-"set term=xterm-256color
+set term=xterm-256color
 
 " tabs
 set tabstop=4
@@ -56,9 +56,8 @@ set expandtab
 set smarttab
 
 " colours
-"set background=dark
-"colorscheme solarized
-colors darkburn
+set background=dark
+colorscheme solarized
 
 " mappings
 let mapleader = ","
@@ -95,10 +94,3 @@ highlight Pmenu ctermbg=238 gui=bold
 
 " colorcolumn while <7.3
 match ErrorMsg '\%>80v.\+'
-
-" gui
-if has("gui_running")
-    set guifont=Consolas:h11
-    set guioptions-=m
-    set guioptions-=T
-endif
