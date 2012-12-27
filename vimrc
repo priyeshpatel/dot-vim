@@ -93,3 +93,6 @@ highlight Pmenu ctermbg=238 gui=bold
 
 " colorcolumn while <7.3
 match ErrorMsg '\%>80v.\+'
+
+" old title
+let &titleold=getcwd()
