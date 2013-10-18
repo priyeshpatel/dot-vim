@@ -25,9 +25,6 @@
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/conque"]
-	path = bundle/conque
-	url = https://github.com/rson/vim-conque.git
 [submodule "bundle/pastie"]
 	path = bundle/pastie
 	url = https://github.com/tpope/vim-pastie.git
