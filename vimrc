@@ -91,6 +91,9 @@ let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 highlight Pmenu ctermbg=238 gui=bold
 
+" flake8
+autocmd BufWritePost *.py call Flake8()
+
 " colorcolumn while <7.3
 match ErrorMsg '\%>80v.\+'
 
