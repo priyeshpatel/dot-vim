@@ -8,10 +8,8 @@
 " no compatibility with vi
 set nocompatible
 
-" pathogen
-filetype off
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" plugins
+silent! runtime bundles.vim
 
 " syntax
 filetype on
@@ -27,7 +25,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set laststatus=2
 set ruler
-"set colorcolumn=80
+set colorcolumn=80
 set showmode
 set showcmd
 set number
@@ -76,12 +74,20 @@ set smartcase
 set ignorecase
 
 " files
+autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufNewFile,BufRead *.json set tw=0
+
+" syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_error_symbol = "😞"
+let g:syntastic_style_warning_symbol = "😕"
 
 " powerline
 let Powerline_symbols = "unicode"
@@ -90,9 +96,6 @@ let Powerline_symbols = "unicode"
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 highlight Pmenu ctermbg=238 gui=bold
-
-" flake8
-autocmd BufWritePost *.py call Flake8()
 
 " colorcolumn while <7.3
 match ErrorMsg '\%>80v.\+'
