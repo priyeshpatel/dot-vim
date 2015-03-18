@@ -1,10 +1,12 @@
 #My Vim Configuration
 
-##Notes
-* The `.vimrc` file has options which are only set under Windows and gVim
-* A symlink is needed from `./vimrc` to `~/.vimrc`
-* The folder will need renaming to `.vim` or `vimfiles` on Windows. 
-* Initialise and update all submodules
+##Installation
+```bash
+cd ~
+git clone https://github.com/priyeshpatel/dot-vim.git .vim
+ln -s ~/.vim/vimrc .vimrc
+vim +PluginInstall +qall
+```
 
 ##Credits
 Priyesh Patel
