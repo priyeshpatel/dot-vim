@@ -17,6 +17,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
+Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on
